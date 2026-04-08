@@ -1,4 +1,4 @@
-# README — CS 537 Project 3: wsh Shell  
+# CS 537 Project 3: wsh Shell  
 
 ## Overview
 This project implements a simplified Unix-like shell called **wsh**, supporting:
