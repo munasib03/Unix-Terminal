@@ -1,8 +1,4 @@
 # README — CS 537 Project 3: wsh Shell  
-**Name:** Munasib Ilham  
-**CS Login:** ilham  
-**Wisc ID:** 908 484 9265
-**Email:** ilham@wisc.edu
 
 ## Overview
 This project implements a simplified Unix-like shell called **wsh**, supporting:
@@ -41,7 +37,7 @@ char *get_variable(const char *var);
 ## Design Decisions & Issues Faced
 
 ### Exit Status Tracking
-One subtle issue was with `last_exit` not being reset between commands. If a command failed (e.g., unknown command), `last_exit` would be set to 1 and persist into the next command's execution even if that command succeeded. The fix was to reset `last_exit = 0` at the start of each pipeline iteration, so each command is evaluated independently. It previously caused hidden test (test 37) to fail.
+One subtle issue was with `last_exit` not being reset between commands. If a command failed (e.g., unknown command), `last_exit` would be set to 1 and persist into the next command's execution even if that command succeeded. The fix was to reset `last_exit = 0` at the start of each pipeline iteration, so each command is evaluated independently.
 
 ### Built-in Commands in Pipelines
 Built-in commands (`cd`, `env`, `exit`) had to be handled both in the single-command path and inside pipeline children. Since pipeline commands run in forked child processes, `cd` inside a pipeline does not affect the parent shell's working directory — this is expected and consistent with how real shells behave.
